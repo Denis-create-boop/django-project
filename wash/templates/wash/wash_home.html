@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}wash{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h3>стиральные машины</h3>
+        {% if wash %}
+            {% for el in wash %}
+                <div class="alert alert-warning">
+                    <p>{{ el.title }}</p>
+                    <p>{{ el.model }}</p>
+                    <a href="{% url 'wash-detail' el.id %}" class="btn btn-warning">Подробнее</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>К сожалению стиральных машин пока нет</p>
+        {% endif %}
+    </div>
+{% endblock %}

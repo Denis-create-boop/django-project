@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}utug{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h3>Утюги</h3>
+        {% if utug %}
+            {% for el in utug %}
+                <div class="alert alert-warning">
+                    <p>{{ el.title }}</p>
+                    <p>{{ el.model }}</p>
+                    <a href="{% url 'utug-detail' el.id %}" class="btn btn-warning">Подробнее</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>К сожалению утюгов пока нет</p>
+        {% endif %}
+    </div>
+{% endblock %}

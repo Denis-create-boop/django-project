@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}muse{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h3>Аккустика</h3>
+        {% if muse %} 
+            {% for el in muse %}
+                <div class="alert alert-warning">
+                    <p>{{ el.title }}</p>
+                    <p>{{ el.model }}</p>
+                    <a href="{% url 'muse-detail' el.id %}" class="btn btn-warning">Подробнее</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>К сожалению аккустики пока нет</p>
+        {% endif %}
+    </div>
+{% endblock %}

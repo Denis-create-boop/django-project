@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ muse.title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ muse.title }}</h1>
+        <p>{{ muse.date }}</p>
+        <p>{{ muse.full_text }}</p>
+        <a href="{% url 'muse-delete' muse.id %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'muse-update' muse.id %}" class="btn btn-success">Редактировать</a><br>
+        <a href="{% url 'muse_home' %}" class="btn btn-info">Назад</a>
+    </div>
+{% endblock %}

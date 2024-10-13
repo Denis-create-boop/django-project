@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ tv.title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ tv.title }}</h1>
+        <p>{{ tv.date }}</p>
+        <p>{{ tv.full_text }}</p>
+        <a href="{% url 'tv-delete' tv.id %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'tv-update' tv.id %}" class="btn btn-success">Редактировать</a><br>
+        <a href="{% url 'tv_home' %}" class="btn btn-info">Назад</a>
+    </div>
+{% endblock %}

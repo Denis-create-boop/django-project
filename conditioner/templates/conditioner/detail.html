@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ condition.title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ condition.title }}</h1>
+        <p>{{ condition.date }}</p>
+        <p>{{ condition.full_text }}</p>
+        <a href="{% url 'condition-delete' condition.id %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'condition-update' condition.id %}" class="btn btn-success">Редактировать</a><br>
+        <a href="{% url 'conditioner_home' %}" class="btn btn-info">Назад</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ phone.title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ phone.title }}</h1>
+        <p>{{ phone.date }}</p>
+        <p>{{ phone.full_text }}</p>
+        <a href="{% url 'phone-delete' phone.id %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'phone-update' phone.id %}" class="btn btn-success">Редактировать</a><br>
+        <a href="{% url 'phone_home' %}" class="btn btn-info">Назад</a>
+    </div>
+{% endblock %}

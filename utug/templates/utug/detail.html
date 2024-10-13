@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ utug.title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ utug.title }}</h1>
+        <p>{{ utug.date }}</p>
+        <p>{{ utug.full_text }}</p>
+        <a href="{% url 'utug-delete' utug.id %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'utug-update' utug.id %}" class="btn btn-success">Редактировать</a><br>
+        <a href="{% url 'utug_home' %}" class="btn btn-info">Назад</a>
+    </div>
+{% endblock %}

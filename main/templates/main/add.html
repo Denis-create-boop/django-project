@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}страница про нас{% endblock %}
+
+{% block content %}
+<div class="features">
+    <div class="maine">
+        <h3>выберите какой товар добавить на сайт</h3>
+        <ul>
+            <a href="{% url 'create_tv' %}"><li><i class="fas fa-solid fa-tv"></i>  Телевизор</li></a>
+            <a href="{% url 'create_muse' %}"><li><i class="fas fa-solid fa-headphones"></i>  Аккустику</li></a>
+            <a href="{% url 'create_computer' %}"><li><i class="fas fa-solid fa-desktop"></i>  Компьютер</li></a>
+            <a href="{% url 'create_fridge' %}"><li><i class="fas fa-solid fa-snowman"></i>  Холодильник</li></a>
+            <a href="{% url 'create_wash' %}"><li><i class="fas fa-solid fa-water"></i>  Стиральную машину</li></a>
+            <a href="{% url 'create_condition' %}"><li><i class="fas fa-solid fa-industry"></i>  Кондиционер</li></a>
+            <a href="{% url 'create_utug' %}"><li><i class="fas fa-solid fa-bars"></i>  Утюг</li></a> 
+            <a href="{% url 'create_phone' %}"><li><i class="fas fa-solid fa-mobile"></i>  Телефон</li></a>  
+        </ul>
+    </div>
+    
+   </div>
+{% endblock %}

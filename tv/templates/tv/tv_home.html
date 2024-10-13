@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}TV{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <img src="{% static 'main/img/T1.jpg' %}" alt="img" width="800" height="280">
+        <h3>Телевизоры</h3>
+        {% if tv %}
+            {% for el in tv %}
+                <div class="alert alert-warning">
+                    <p>{{ el.title }}</p>
+                    <p>{{ el.model }}</p>
+                    {% if el.title == 'samsung' %}
+                        <img src="{% static 'main/img/T2.jpeg' %}" alt="img" width="200" height="100">
+                    
+                    {% elif el.title == 'LG' %}
+                         <img src="{% static 'main/img/large01.jpg' %}" alt="img" width="200" height="100">
+                    {% endif %}
+                    <a href="{% url 'tv-detail' el.id %}" class="btn btn-warning">Подробнее</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>К сожалению телевизаров пока нет</p>
+        {% endif %}
+    </div>
+{% endblock %}

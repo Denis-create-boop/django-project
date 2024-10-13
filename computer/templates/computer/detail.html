@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ comp.title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ comp.title }}</h1>
+        <p>{{ comp.date }}</p>
+        <p>{{ comp.full_text }}</p>
+        <a href="{% url 'comp-delete' comp.id %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'comp-update' comp.id %}" class="btn btn-success">Редактировать</a><br>
+        <a href="{% url 'comp_home' %}" class="btn btn-info">Назад</a>
+    </div>
+{% endblock %}

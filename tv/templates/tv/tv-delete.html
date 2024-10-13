@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Удаление товара{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1><i>Удаление товара</i></h1>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-success" type="submit">Удалить</button>
+            <a href="{% url 'tv-detail' tv.id %}" class="btn btn-info">назад</a>
+        </form>
+    </div>
+{% endblock %}
