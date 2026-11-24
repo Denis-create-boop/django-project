@@ -27,10 +27,14 @@ SECRET_KEY = 'django-insecure-k53kt0zv+kntf(ahz#l8joosv!*=6c-x&7!z#-orqkyw4t&$-*
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+CSRF_TRUSTED_ORIGINS = []
+if os.environ.get('CODESPACE_NAME'):
+    # Codespaces can forward the browser Origin as HTTPS localhost.
+    CSRF_TRUSTED_ORIGINS += ['https://localhost:8000', 'https://127.0.0.1:8000']
 if os.environ.get('CODESPACE_NAME') and os.environ.get('GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN'):
     codespace_host = os.environ['CODESPACE_NAME'] + '-8000.' + os.environ['GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN']
     ALLOWED_HOSTS.append(codespace_host)
-    CSRF_TRUSTED_ORIGINS = ['https://' + codespace_host]
+    CSRF_TRUSTED_ORIGINS.append('https://' + codespace_host)
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
