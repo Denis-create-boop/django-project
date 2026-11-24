@@ -1,19 +1,14 @@
 {% extends 'main/base.html' %}
-{% load static %}
-
-{% block title %}Главная страница{% endblock %}
-
+{% block title %}Главная{% endblock %}
 {% block content %}
-   <div class="features">
-    <h3>Добро пожаловать на сайт магазина <i>Eleck</i></h3>
-    <img src="{% static 'main/img/p1.jpg' %}" alt="img" height="450" width="1000">
-    <p>Этот магазин основан в далёком 1864 ом. году инженером Томасом Фоделем. Томас был обычным рабочим на заводе по изготовлению электронных
-        чипов. В 21 год Томас решил попробовать собрать свой первый собственный чип, после чего проверить на что он способен.<br>
-        После успешного проэкта Томас решил что хочет изобретать и продавать электронику. В 1890 ом. году он открый свой первый магазин.
-        На данный момент уже насчитываеться более 1000 магазинов по все Европе.
-        В нашем магазине вы можете купить различную электронику на любой вкус, качественную и главное по доступной цене.
-    </p>
-    <a href="{% url 'about' %}"><button class="btn btn-primary">Подробнее о магазине</button></a>
-   </div>
-
+<section class="hero"><div class="hero-copy"><span class="eyebrow">ELECK / TECH STORE</span><h1>Технологии.<br>Для вашей жизни.</h1><p>Электроника и бытовая техника в одном каталоге. Найдите то, что нужно для дома, работы и отдыха.</p><a class="btn hero-button" href="#catalog">Смотреть каталог <span>→</span></a></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="device"><i class="fas fa-microchip"></i></div><span class="sat sat-one"><i class="fas fa-headphones"></i></span><span class="sat sat-two"><i class="fas fa-mobile-alt"></i></span><span class="sat sat-three"><i class="fas fa-bolt"></i></span></div></section>
+<section id="catalog"><div class="section-head"><div><span class="eyebrow dark">КАТАЛОГ</span><h2>Выберите категорию</h2></div><span class="muted">8 разделов</span></div><div class="category-grid"><a class="category" href="{% url 'tv_home' %}"><span class="category-icon"><i class="fas fa-tv"></i></span><strong>Телевизоры</strong><small>Большой экран</small><span class="arrow">→</span></a>
+<a class="category" href="{% url 'muse_home' %}"><span class="category-icon"><i class="fas fa-headphones"></i></span><strong>Акустика</strong><small>Чистый звук</small><span class="arrow">→</span></a>
+<a class="category" href="{% url 'comp_home' %}"><span class="category-icon"><i class="fas fa-desktop"></i></span><strong>Компьютеры</strong><small>Работа и игры</small><span class="arrow">→</span></a>
+<a class="category" href="{% url 'fridge_home' %}"><span class="category-icon"><i class="fas fa-snowflake"></i></span><strong>Холодильники</strong><small>Свежесть дома</small><span class="arrow">→</span></a>
+<a class="category" href="{% url 'wash_home' %}"><span class="category-icon"><i class="fas fa-water"></i></span><strong>Стиральные машины</strong><small>Уход за вещами</small><span class="arrow">→</span></a>
+<a class="category" href="{% url 'conditioner_home' %}"><span class="category-icon"><i class="fas fa-wind"></i></span><strong>Кондиционеры</strong><small>Комфортный климат</small><span class="arrow">→</span></a>
+<a class="category" href="{% url 'utug_home' %}"><span class="category-icon"><i class="fas fa-tshirt"></i></span><strong>Утюги</strong><small>Уход за одеждой</small><span class="arrow">→</span></a>
+<a class="category" href="{% url 'phone_home' %}"><span class="category-icon"><i class="fas fa-mobile-alt"></i></span><strong>Телефоны</strong><small>Всегда на связи</small><span class="arrow">→</span></a></div></section>
+<section class="about-strip"><div><h2>Всё необходимое — в Eleck</h2><p>От смартфонов до крупной бытовой техники.</p></div><a class="btn btn-outline-primary" href="{% url 'about' %}">О магазине →</a></section>
 {% endblock %}
