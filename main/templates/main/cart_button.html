@@ -1,0 +1,1 @@
+{% if product.price != None %}<form method="post" action="{% url 'cart_add' category product.pk %}" class="cart-action">{% csrf_token %}<button class="btn btn-primary" type="submit"><i class="fas fa-shopping-cart"></i> В корзину</button></form>{% endif %}

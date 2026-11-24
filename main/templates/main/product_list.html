@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+{% block title %}{{ category_label }}{% endblock %}
+{% block content %}
+<div class="section-head"><div><span class="eyebrow dark">КАТАЛОГ</span><h2>{{ category_label }}</h2></div>{% if user.is_superuser and user.is_active %}<a href="{% url create_url %}" class="btn btn-primary">+ Добавить товар</a>{% endif %}</div>
+<div class="products-grid">{% for product in products %}<article class="product-card">
+<a class="product-photo" href="{% url detail_url product.pk %}">{% if product.cover %}<img src="{{ product.cover.image.url }}" alt="{{ product.title }}" loading="lazy">{% else %}<i class="fas fa-image"></i><span>Нет фотографии</span>{% endif %}</a>
+{% if product.discount and product.price != None %}<span class="discount-tag">−{{ product.discount }}%</span>{% endif %}
+<div class="product-body"><h3><a href="{% url detail_url product.pk %}">{{ product.title }}</a></h3><p>{{ product.model }}</p><p>{{ product.full_text|truncatechars:110 }}</p><div class="product-price">{% include 'main/product_price.html' %}</div><a class="btn btn-outline-primary" href="{% url detail_url product.pk %}">Подробнее</a>{% include 'main/cart_button.html' %}</div>
+</article>{% empty %}<div class="features"><h3>Товаров пока нет</h3><p>В этой категории ещё не добавлены товары.</p></div>{% endfor %}</div>
+{% endblock %}

@@ -1,42 +1,18 @@
-from django.shortcuts import render, redirect
+from main import product_views as shared
 from .models import Muse
 from .forms import MuseForm
-from django.views.generic import DetailView, UpdateView, DeleteView
 
-# Create your views here.
 def muse_home(request):
-    muse = Muse.objects.order_by('-date')
-    return render(request, 'muse/muse_home.html', {'muse': muse})
-
-class MuseDetailView(DetailView):
-    model = Muse
-    template_name = 'muse/detail.html'
-    context_object_name = 'muse'
-
-class MuseUpdateView(UpdateView):
-    model = Muse
-    template_name = 'muse/create.html'
-    form_class = MuseForm
-
-class MuseDeleteView(DeleteView):
-    model = Muse
-    success_url = '/muse/'
-    template_name = 'muse/muse-delete.html'
-
+    return shared.listing(request, Muse)
 
 def create_muse(request):
-    error = ''
-    if request.method == 'POST':
-        form = MuseForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-        else:
-            error = 'форма была неверной'
-    
-    form = MuseForm()
-    data = {
-        'form': form,
-        'error': error
-    }
-    return render(request, 'muse/create.html', data)
+    return shared.edit(request, Muse, MuseForm)
+
+def product_detail(request, pk):
+    return shared.detail(request, Muse, pk)
+
+def product_update(request, pk):
+    return shared.edit(request, Muse, MuseForm, pk)
+
+def product_delete(request, pk):
+    return shared.remove(request, Muse, pk)

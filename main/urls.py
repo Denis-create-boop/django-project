@@ -1,8 +1,11 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from . import views
+from . import views, cart
 
 urlpatterns = [
+    path('cart/', cart.view, name='cart'),
+    path('cart/add/<str:category>/<int:pk>/', cart.add, name='cart_add'),
+    path('cart/change/<str:category>/<int:pk>/', cart.change, name='cart_change'),
     path('', views.index, name='home'),
     path('about', views.about, name='about'),
     path('add/', views.add, name='add'),

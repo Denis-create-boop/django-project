@@ -1,0 +1,1 @@
+{% if product.price != None %}<strong>{{ product.final_price|floatformat:2 }} ₽</strong>{% if product.discount %}<del>{{ product.price|floatformat:2 }} ₽</del>{% endif %}{% else %}<span class="muted">Цена не указана</span>{% endif %}

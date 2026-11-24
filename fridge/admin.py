@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Fridge
-# Register your models here.
+from .models import Fridge, FridgeImage
 
-admin.site.register(Fridge)
+class PhotoInline(admin.TabularInline):
+    model = FridgeImage
+    extra = 2
+
+@admin.register(Fridge)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('title','model','price','discount')
+    inlines = [PhotoInline]

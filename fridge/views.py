@@ -1,42 +1,18 @@
-from django.shortcuts import render, redirect
+from main import product_views as shared
 from .models import Fridge
 from .forms import FridgeForm
-from django.views.generic import DetailView, UpdateView, DeleteView
 
-# Create your views here.
 def fridge_home(request):
-    fridge = Fridge.objects.order_by('-date')
-    return render(request, 'fridge/fridge_home.html', {'fridge': fridge})
-
-class FridgeDetailView(DetailView):
-    model = Fridge
-    template_name = 'fridge/detail.html'
-    context_object_name = 'fridge'
-
-class FridgeUpdateView(UpdateView):
-    model = Fridge
-    template_name = 'fridge/create.html'
-    form_class = FridgeForm
-
-class FridgeDeleteView(DeleteView):
-    model = Fridge
-    success_url = '/fridge/'
-    template_name = 'fridge/fridge-delete.html'
+    return shared.listing(request, Fridge)
 
 def create_fridge(request):
-    error = ''
-    if request.method == 'POST':
-        form = FridgeForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-        else:
-            error = 'форма была неверной'
-    
-    form = FridgeForm()
-    data = {
-        'form': form,
-        'error': error
-    }
-    return render(request, 'fridge/create.html', data)
-     
+    return shared.edit(request, Fridge, FridgeForm)
+
+def product_detail(request, pk):
+    return shared.detail(request, Fridge, pk)
+
+def product_update(request, pk):
+    return shared.edit(request, Fridge, FridgeForm, pk)
+
+def product_delete(request, pk):
+    return shared.remove(request, Fridge, pk)

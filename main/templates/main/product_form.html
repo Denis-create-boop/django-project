@@ -1,0 +1,6 @@
+{% extends 'main/base.html' %}
+{% block title %}{% if product %}Редактирование{% else %}Добавление товара{% endif %}{% endblock %}
+{% block content %}<a href="{% url home_url %}">← {{ category_label }}</a><section class="features"><h1>{% if product %}Редактирование товара{% else %}Новый товар{% endif %}</h1><p>{{ category_label }}</p><form method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.non_field_errors }}
+{% for field in form %}<div class="mb-3"><label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<small class="muted d-block">{{ field.help_text }}</small>{% endif %}{{ field.errors }}</div>{% endfor %}
+{% if product.images.all %}<h3>Загруженные фотографии</h3><div class="thumbs">{% for photo in product.images.all %}<label><img src="{{ photo.image.url }}" alt="Фото"><span><input type="checkbox" name="remove_photo" value="{{ photo.pk }}"> Удалить</span></label>{% endfor %}</div>{% endif %}
+<button type="submit" class="btn btn-primary">Сохранить товар</button><a href="{% url home_url %}" class="btn btn-outline-primary">Отмена</a></form></section>{% endblock %}

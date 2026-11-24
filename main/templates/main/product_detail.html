@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+{% block title %}{{ product.title }}{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url home_url %}">← {{ category_label }}</a>
+<section class="features product-detail"><div class="gallery">
+{% if product.cover %}<img id="heroPhoto" class="gallery-main" src="{{ product.cover.image.url }}" alt="{{ product.title }}"><div class="thumbs">{% for photo in product.images.all %}<button type="button" onclick="document.getElementById('heroPhoto').src=this.querySelector('img').src" aria-label="Фото {{ forloop.counter }}"><img src="{{ photo.image.url }}" alt="Фото {{ forloop.counter }}"></button>{% endfor %}</div>{% else %}<div class="product-photo"><i class="fas fa-image"></i><span>Нет фотографии</span></div>{% endif %}
+</div><div><span class="eyebrow dark">{{ category_label }}</span><h1>{{ product.title }}</h1><p>{{ product.model }}</p><div class="product-price">{% include 'main/product_price.html' %}{% if product.discount and product.price != None %}<span class="discount-inline">−{{ product.discount }}%</span>{% endif %}</div>{% include 'main/cart_button.html' %}
+{% if user.is_superuser and user.is_active %}<div class="mt-3"><a class="btn btn-success" href="{% url update_url product.pk %}">Редактировать</a><a class="btn btn-danger" href="{% url delete_url product.pk %}">Удалить</a></div>{% endif %}</div>
+<div class="product-info"><h2>Описание</h2><p>{{ product.full_text|linebreaksbr }}</p><h2>Характеристики</h2><dl class="spec-list"><dt>Модель</dt><dd>{{ product.model }}</dd>{% for name,value in product.specifications.items %}<dt>{{ name }}</dt><dd>{{ value }}</dd>{% empty %}<dt>Дополнительные характеристики</dt><dd>Не заполнены</dd>{% endfor %}</dl></div></section>
+{% endblock %}
