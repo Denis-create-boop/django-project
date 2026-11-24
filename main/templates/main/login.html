@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+<section class="features" style="max-width:480px;margin:30px auto"><span class="eyebrow dark">ELECK / ACCOUNT</span><h1>Вход в магазин</h1><p>Введите логин и пароль вашей учётной записи.</p>
+<form method="post" action="{% url 'login' %}">{% csrf_token %}
+{% if form.errors %}<div class="alert alert-danger">Неверный логин или пароль.</div>{% endif %}
+<label for="id_username" class="form-label">Логин</label><input class="form-control mb-3" id="id_username" name="username" autocomplete="username" required autofocus>
+<label for="id_password" class="form-label">Пароль</label><input class="form-control mb-3" id="id_password" name="password" type="password" autocomplete="current-password" required>
+<input type="hidden" name="next" value="{{ next }}"><button class="btn btn-primary w-100" type="submit">Войти</button></form>
+<a href="{% url 'home' %}">← Вернуться в каталог</a></section>{% endblock %}
