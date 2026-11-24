@@ -1,13 +1,3 @@
 {% extends 'main/base.html' %}
-
-{% block title %}страница про нас{% endblock %}
-
-{% block content %}
-<div class="features">
-    <h3>Hello</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique numquam, voluptatem cumque adipisci vero labore excepturi vitae maxime 
-        quam alias corrupti, mollitia, omnis iusto amet! Placeat voluptate mollitia in totam?</p>
-    <a href="{% url 'home' %}"><button class="btn btn-info">На главную</button></a>
-   </div>
-{% endblock %}
-
+{% block title %}О магазине{% endblock %}
+{% block content %}<section class="features"><span class="eyebrow dark">О ПРОЕКТЕ</span><h1>Знакомьтесь: Eleck.</h1><p>Eleck — демонстрационный каталог электроники и бытовой техники. Здесь можно просматривать товары по категориям, изучать характеристики и управлять ассортиментом.</p><a class="btn btn-primary" href="{% url 'home' %}#catalog">Перейти в каталог →</a></section>{% endblock %}
