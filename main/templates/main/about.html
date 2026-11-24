@@ -1,3 +1,44 @@
 {% extends 'main/base.html' %}
 {% block title %}О магазине{% endblock %}
-{% block content %}<section class="features"><span class="eyebrow dark">О ПРОЕКТЕ</span><h1>Знакомьтесь: Eleck.</h1><p>Eleck — демонстрационный каталог электроники и бытовой техники. Здесь можно просматривать товары по категориям, изучать характеристики и управлять ассортиментом.</p><a class="btn btn-primary" href="{% url 'home' %}#catalog">Перейти в каталог →</a></section>{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">ELECK / ABOUT US</span>
+    <h1>Техника для<br>каждого дня.</h1>
+    <p>Eleck — демонстрационный интернет-магазин электроники и бытовой техники. Мы объединяем разные категории устройств в одном удобном каталоге, чтобы выбор техники для дома, работы и отдыха был проще.</p>
+    <a class="btn hero-button" href="{% url 'home' %}#catalog">Перейти в каталог →</a>
+  </div>
+  <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="device"><i class="fas fa-bolt"></i></div><span class="sat sat-one"><i class="fas fa-headphones"></i></span><span class="sat sat-two"><i class="fas fa-mobile-alt"></i></span><span class="sat sat-three"><i class="fas fa-tv"></i></span></div>
+</section>
+<section class="features mb-4">
+  <span class="eyebrow dark">НАШ АССОРТИМЕНТ</span>
+  <h3>Всё необходимое в одном месте</h3>
+  <p>В каталоге представлены телевизоры для домашнего кинотеатра, акустические системы для музыки, компьютеры для работы и игр, смартфоны для общения, а также холодильники, стиральные машины, кондиционеры и утюги для повседневного комфорта.</p>
+  <p>Карточки товаров содержат описания, галереи изображений, цены и технические характеристики, подобранные с учётом особенностей каждой категории. Это помогает сравнивать модели и выбирать подходящие устройства.</p>
+  <div class="category-grid mt-4">
+    <a class="category" href="{% url 'tv_home' %}"><span class="category-icon"><i class="fas fa-tv"></i></span><strong>Телевизоры</strong><small>Кино и развлечения</small></a>
+    <a class="category" href="{% url 'muse_home' %}"><span class="category-icon"><i class="fas fa-headphones"></i></span><strong>Акустика</strong><small>Музыка и звук</small></a>
+    <a class="category" href="{% url 'comp_home' %}"><span class="category-icon"><i class="fas fa-desktop"></i></span><strong>Компьютеры</strong><small>Работа и игры</small></a>
+    <a class="category" href="{% url 'phone_home' %}"><span class="category-icon"><i class="fas fa-mobile-alt"></i></span><strong>Телефоны</strong><small>Связь и мобильность</small></a>
+    <a class="category" href="{% url 'fridge_home' %}"><span class="category-icon"><i class="fas fa-snowflake"></i></span><strong>Холодильники</strong><small>Хранение продуктов</small></a>
+    <a class="category" href="{% url 'wash_home' %}"><span class="category-icon"><i class="fas fa-water"></i></span><strong>Стиральные машины</strong><small>Уход за вещами</small></a>
+    <a class="category" href="{% url 'conditioner_home' %}"><span class="category-icon"><i class="fas fa-wind"></i></span><strong>Кондиционеры</strong><small>Комфортный климат</small></a>
+    <a class="category" href="{% url 'utug_home' %}"><span class="category-icon"><i class="fas fa-tshirt"></i></span><strong>Утюги</strong><small>Уход за одеждой</small></a>
+  </div>
+</section>
+<section class="features mb-4">
+  <span class="eyebrow dark">УДОБНЫЙ ВЫБОР</span><h3>Как пользоваться магазином</h3>
+  <div class="category-grid">
+    <div class="category"><span class="category-icon"><i class="fas fa-th-large"></i></span><strong>01. Каталог</strong><small>Выберите нужную категорию техники.</small></div>
+    <div class="category"><span class="category-icon"><i class="fas fa-list"></i></span><strong>02. Характеристики</strong><small>Изучите описание, параметры и фотографии.</small></div>
+    <div class="category"><span class="category-icon"><i class="fas fa-tags"></i></span><strong>03. Цена и скидки</strong><small>Сравните стоимость и доступные скидки.</small></div>
+    <div class="category"><span class="category-icon"><i class="fas fa-shopping-cart"></i></span><strong>04. Корзина</strong><small>Добавьте товары и измените их количество.</small></div>
+  </div>
+</section>
+<section class="features">
+  <span class="eyebrow dark">О ПРОЕКТЕ</span><h3>Eleck — современный учебный интернет-магазин</h3>
+  <p>Проект создан на Python и Django и демонстрирует работу полноценного товарного каталога, авторизации, разграничения прав доступа и корзины. Управление ассортиментом доступно администратору через собственную панель магазина.</p>
+  <p>Демонстрационные модели, цены и технические характеристики являются условными, а изображения — иллюстрациями. Сайт не принимает оплату и не оформляет реальные заказы.</p>
+  <a class="btn btn-primary" href="{% url 'home' %}#catalog">Смотреть каталог →</a>
+</section>
+{% endblock %}
